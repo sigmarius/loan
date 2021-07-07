@@ -975,6 +975,8 @@ function () {
   _createClass(Slider, [{
     key: "showSlides",
     value: function showSlides(n) {
+      var _this = this;
+
       // n => определяет направление движения => +1 вперед, -1 назад
       if (n > this.slides.length) {
         this.slideIndex = 1;
@@ -982,6 +984,23 @@ function () {
 
       if (n < 1) {
         this.slideIndex = this.slides.length;
+      }
+
+      try {
+        this.hanson.style.opacity = '0'; // показываем блок на слайде №3 через 3с
+
+        if (n === 3) {
+          this.hanson.classList.add('animated');
+          setTimeout(function () {
+            _this.hanson.style.opacity = '1';
+
+            _this.hanson.classList.add('slideInUp');
+          }, 3000);
+        } else {
+          this.hanson.classList.remove('slideInUp');
+        }
+      } catch (e) {
+        console.log("\u0427\u0442\u043E-\u0442\u043E \u043F\u043E\u0448\u043B\u043E \u043D\u0435 \u0442\u0430\u043A :( ".concat(e));
       }
 
       this.slides.forEach(function (slide) {
@@ -997,17 +1016,23 @@ function () {
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
+
+      try {
+        this.hanson = document.querySelector('.hanson');
+      } catch (e) {
+        console.log("\u0427\u0442\u043E-\u0442\u043E \u043F\u043E\u0448\u043B\u043E \u043D\u0435 \u0442\u0430\u043A :( ".concat(e));
+      }
 
       this.btns.forEach(function (item) {
         item.addEventListener('click', function () {
-          _this.plusSlides(1);
+          _this2.plusSlides(1);
         });
         item.parentNode.previousElementSibling.addEventListener('click', function (evt) {
           evt.preventDefault();
-          _this.slideIndex = 1;
+          _this2.slideIndex = 1;
 
-          _this.showSlides(_this.slideIndex);
+          _this2.showSlides(_this2.slideIndex);
         });
       });
       this.showSlides(this.slideIndex);
