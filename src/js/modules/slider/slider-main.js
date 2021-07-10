@@ -44,29 +44,44 @@ export default class MainSlider extends Slider {
         this.showSlides(this.slideIndex += n);
     }
 
-    render() {
-        try {
-            try {
-                this.hanson = document.querySelector('.hanson');
-            } catch (e) {
-                console.log(`Что-то пошло не так :( ${e}`);
-            }
-
-            this.btns.forEach(item => {
-                item.addEventListener('click', () => {
-                    this.plusSlides(1);
-                });
-
-                item.parentNode.previousElementSibling.addEventListener('click', (evt) => {
-                    evt.preventDefault();
-                    this.slideIndex = 1;
-                    this.showSlides(this.slideIndex);
-                });
+    bindTriggers() {
+        this.btns.forEach(item => {
+            item.addEventListener('click', () => {
+                this.plusSlides(1);
             });
 
+            item.parentNode.previousElementSibling.addEventListener('click', (evt) => {
+                evt.preventDefault();
+                this.slideIndex = 1;
+                this.showSlides(this.slideIndex);
+            });
+        });
+
+        document.querySelectorAll('.prevmodule').forEach(item => {
+            item.addEventListener('click', (evt) => {
+                evt.stopPropagation();
+                evt.preventDefault();
+                this.plusSlides(-1);
+            });
+        });
+
+        document.querySelectorAll('.nextmodule').forEach(item => {
+            item.addEventListener('click', (evt) => {
+                evt.stopPropagation();
+                evt.preventDefault();
+                this.plusSlides(1);
+            });
+        });
+    }
+
+    render() {
+        if (this.container) {
+            try {
+                this.hanson = document.querySelector('.hanson');
+            } catch (e) {}
+
             this.showSlides(this.slideIndex);
-        } catch (evt) {
-            console.log(`Something is wrong :( ${evt}`);
+            this.bindTriggers();
         }
     }
 }
