@@ -29,7 +29,7 @@ export default class MainSlider extends Slider {
             } else {
                 this.hanson.classList.remove('slideInUp');
             }
-        } catch(e) {
+        } catch (e) {
             console.log(`Что-то пошло не так :( ${e}`);
         }
 
@@ -46,23 +46,27 @@ export default class MainSlider extends Slider {
 
     render() {
         try {
-            this.hanson = document.querySelector('.hanson');
-        } catch(e) {
-            console.log(`Что-то пошло не так :( ${e}`);
+            try {
+                this.hanson = document.querySelector('.hanson');
+            } catch (e) {
+                console.log(`Что-то пошло не так :( ${e}`);
+            }
+
+            this.btns.forEach(item => {
+                item.addEventListener('click', () => {
+                    this.plusSlides(1);
+                });
+
+                item.parentNode.previousElementSibling.addEventListener('click', (evt) => {
+                    evt.preventDefault();
+                    this.slideIndex = 1;
+                    this.showSlides(this.slideIndex);
+                });
+            });
+
+            this.showSlides(this.slideIndex);
+        } catch (evt) {
+            console.log(`Something is wrong :( ${evt}`);
         }
-
-        this.btns.forEach(item => {
-            item.addEventListener('click', () => {
-                this.plusSlides(1);
-            });
-
-            item.parentNode.previousElementSibling.addEventListener('click', (evt) => {
-                evt.preventDefault();
-                this.slideIndex = 1;
-                this.showSlides(this.slideIndex);
-            });
-        });
-
-        this.showSlides(this.slideIndex);
     }
 }

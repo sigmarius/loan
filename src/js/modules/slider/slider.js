@@ -10,7 +10,7 @@ export default class Slider {
         } = {}){
         // передаем пустой объект по дефолту
         this.container = document.querySelector(container);
-        this.slides = this.container.children;
+        try {this.slides = this.container.children;} catch(evt){}
         this.btns = document.querySelectorAll(btns);
         this.prev = document.querySelector(prev);
         this.next = document.querySelector(next);
