@@ -44,8 +44,8 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     feedSlider.init();
 
-    const player = new Video('.showup .play', '.overlay');
-    player.init();
+    new Video('.showup .play', '.overlay').init();
+    new Video('.module__video-item .play', '.overlay').init();
 
     new Difference('.officerold', '.officernew', '.officer__card-item').init();
 
