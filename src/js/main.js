@@ -4,6 +4,7 @@ import Video from "./modules/video";
 import Difference from "./modules/difference";
 import Form from "./modules/forms";
 import ShowBlock from "./modules/show-block";
+import Download from "./modules/download";
 
 window.addEventListener('DOMContentLoaded', () => {
     const slider = new MainSlider({
@@ -53,4 +54,6 @@ window.addEventListener('DOMContentLoaded', () => {
     new Form('.form').init();
 
     new ShowBlock('.plus').init();
+
+    new Download('.download').init();
 });
