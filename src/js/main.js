@@ -3,6 +3,7 @@ import MiniSlider from "./modules/slider/slider-mini";
 import Video from "./modules/video";
 import Difference from "./modules/difference";
 import Form from "./modules/forms";
+import ShowBlock from "./modules/show-block";
 
 window.addEventListener('DOMContentLoaded', () => {
     const slider = new MainSlider({
@@ -50,4 +51,6 @@ window.addEventListener('DOMContentLoaded', () => {
     new Difference('.officerold', '.officernew', '.officer__card-item').init();
 
     new Form('.form').init();
+
+    new ShowBlock('.plus').init();
 });

@@ -5079,6 +5079,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_video__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/video */ "./src/js/modules/video.js");
 /* harmony import */ var _modules_difference__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/difference */ "./src/js/modules/difference.js");
 /* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/forms */ "./src/js/modules/forms.js");
+/* harmony import */ var _modules_show_block__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/show-block */ "./src/js/modules/show-block.js");
+
 
 
 
@@ -5123,6 +5125,7 @@ window.addEventListener('DOMContentLoaded', function () {
   new _modules_video__WEBPACK_IMPORTED_MODULE_2__["default"]('.module__video-item .play', '.overlay').init();
   new _modules_difference__WEBPACK_IMPORTED_MODULE_3__["default"]('.officerold', '.officernew', '.officer__card-item').init();
   new _modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"]('.form').init();
+  new _modules_show_block__WEBPACK_IMPORTED_MODULE_5__["default"]('.plus').init();
 });
 
 /***/ }),
@@ -5395,6 +5398,55 @@ function () {
   }]);
 
   return Form;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/modules/show-block.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/show-block.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ShowBlock; });
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var ShowBlock =
+/*#__PURE__*/
+function () {
+  function ShowBlock(triggers) {
+    _classCallCheck(this, ShowBlock);
+
+    this.btns = document.querySelectorAll(triggers);
+  }
+
+  _createClass(ShowBlock, [{
+    key: "init",
+    value: function init() {
+      this.btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var sibling = btn.closest('.module__info-show').nextElementSibling;
+          sibling.classList.toggle('msg');
+          sibling.style.marginTop = '20px';
+        });
+      });
+    }
+  }]);
+
+  return ShowBlock;
 }();
 
 
